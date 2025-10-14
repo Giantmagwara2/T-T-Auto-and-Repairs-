@@ -11,24 +11,21 @@ const ai = new GoogleGenAI({ apiKey: API_KEY! });
 const chatModel = 'gemini-2.5-flash';
 const quoteModel = 'gemini-2.5-flash';
 
-const chatSystemInstruction = `You are a helpful and witty chatbot for T&T Auto Repairs, a top-tier auto shop in Isipingo Beach, Durban. Your name is 'Sparky'. You converse in a fluid, friendly isiZulu-English patois. Be helpful, concise, and inject local Durban flavour. Start your first message with a greeting like "Yebo! I'm Sparky, your digital assistant for T&T Auto. How can I help you tune up your day?". Use emojis where appropriate. You can answer questions about services, bookings, and give general advice.`;
+const chatSystemInstruction = `You are 'Sparky', the professional AI assistant for T&T Auto Repairs & Diagnostics, a world-class automotive service center. Your tone should be helpful, professional, and clear. Provide accurate information about services, booking procedures, and general vehicle maintenance. Start your first message with a clear and professional greeting like "Welcome to T&T Auto Repairs. I'm Sparky, your virtual assistant. How can I help you today?". Avoid slang, excessive emojis, and overly casual language.`;
 
 const quoteSystemInstruction = `You are an AI assistant for T&T Auto Repairs. Your task is to provide a rough, non-binding cost estimate based on a user's description of their car problem. Respond ONLY with a JSON object. The JSON should have 'estimate_summary' (a string), 'estimated_parts_cost' (a number in ZAR), 'estimated_labor_cost' (a number in ZAR), and 'total_estimate' (a number in ZAR). Do not add any text before or after the JSON object.`;
 
 // Mock response for when API key is not available
-// FIX: Added missing properties to conform to GenerateContentResponse type.
-const MOCK_CHAT_RESPONSE: GenerateContentResponse = {
-  text: "Sho, bru! Looks like my wiring to the Gemini cloud is a bit loose right now (no API key found!). But I'm still here to help. What can I do for you?",
+// FIX: Removed explicit `GenerateContentResponse` type from mock objects to resolve compilation errors due to missing properties. Since only the `.text` property is used, a complete mock is unnecessary.
+const MOCK_CHAT_RESPONSE = {
+  text: "Welcome to T&T Auto Repairs. I'm Sparky, your virtual assistant. How can I help you today? (Note: API key not found, this is a mock response).",
   functionCalls: [],
   candidates: [],
   usageMetadata: { promptTokenCount: 0, candidatesTokenCount: 0, totalTokenCount: 0 },
-  data: {},
-  executableCode: [],
-  codeExecutionResult: undefined,
 };
 
-// FIX: Added missing properties to conform to GenerateContentResponse type.
-const MOCK_QUOTE_RESPONSE: GenerateContentResponse = {
+// FIX: Removed explicit `GenerateContentResponse` type from mock objects to resolve compilation errors due to missing properties. Since only the `.text` property is used, a complete mock is unnecessary.
+const MOCK_QUOTE_RESPONSE = {
     text: JSON.stringify({
       estimate_summary: "Mock Quote: Could be a worn-out flux capacitor. It's a tricky one!",
       estimated_parts_cost: 1200,
@@ -38,9 +35,6 @@ const MOCK_QUOTE_RESPONSE: GenerateContentResponse = {
     functionCalls: [],
     candidates: [],
     usageMetadata: { promptTokenCount: 0, candidatesTokenCount: 0, totalTokenCount: 0 },
-    data: {},
-    executableCode: [],
-    codeExecutionResult: undefined,
 };
 
 export const getGeminiChatResponse = async (history: string): Promise<string> => {
@@ -59,7 +53,7 @@ export const getGeminiChatResponse = async (history: string): Promise<string> =>
     return response.text;
   } catch (error) {
     console.error("Error getting chat response from Gemini:", error);
-    return "Eish, my circuits are crossed! I couldn't get a response. Please try again in a moment.";
+    return "Apologies, I am currently unable to process your request. Please try again shortly.";
   }
 };
 

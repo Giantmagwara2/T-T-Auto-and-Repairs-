@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -16,7 +15,7 @@ const App: React.FC = () => {
     <HashRouter>
       <div className="bg-ocean-dark text-ocean-light font-serif min-h-screen flex flex-col">
         <Header />
-        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

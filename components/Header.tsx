@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CogIcon } from './icons/OutlineIcons';
@@ -16,7 +15,7 @@ const Header: React.FC = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  const linkClass = "px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-300";
+  const linkClass = "px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta";
   const activeLinkClass = "bg-zulu-terracotta text-white";
   const inactiveLinkClass = "text-gray-300 hover:bg-weathered-brass hover:text-white";
 
@@ -47,6 +46,8 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -60,7 +61,7 @@ const Header: React.FC = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <NavLink

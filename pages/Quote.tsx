@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { getGeminiQuote } from '../services/geminiService';
 import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
@@ -48,9 +47,9 @@ const Quote: React.FC = () => {
   return (
     <div className="animate-fade-in max-w-3xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Sibyl's Symposium</h1>
+        <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">AI-Powered Estimate Tool</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-          Vocalize your car's troubles. Our AI oracle will conjure a preliminary quote in seconds.
+          Describe your vehicle's issue to receive an instant, AI-generated preliminary cost estimate.
         </p>
       </div>
 
@@ -82,7 +81,7 @@ const Quote: React.FC = () => {
             disabled={isLoading}
             className="mt-4 w-full flex items-center justify-center gap-2 bg-zulu-terracotta text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 disabled:bg-gray-600 disabled:cursor-not-allowed"
           >
-            {isLoading ? 'Consulting the Oracle...' : 'Generate Quote'}
+            {isLoading ? 'Analyzing Data...' : 'Generate Quote'}
             {!isLoading && <PaperAirplaneIcon className="h-5 w-5" />}
           </button>
           {error && <p className="text-red-400 mt-2 text-sm">{error}</p>}
@@ -90,14 +89,17 @@ const Quote: React.FC = () => {
       </div>
 
       {isLoading && (
-        <div className="text-center mt-8">
+        <div className="text-center mt-8" role="status" aria-live="polite">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-weathered-brass"></div>
-            <p className="text-gray-400 mt-2">Forging your prognosis...</p>
+            <p className="text-gray-400 mt-2">
+              <span className="sr-only">Loading.</span>
+              Generating your estimate...
+            </p>
         </div>
       )}
 
       {quote && !isLoading && (
-        <div className="mt-8 bg-kelp-emerald/10 p-8 rounded-lg border-2 border-kelp-emerald animate-fade-in">
+        <div className="mt-8 bg-kelp-emerald/10 p-8 rounded-lg border-2 border-kelp-emerald animate-fade-in" aria-live="polite">
           <h2 className="font-sans text-2xl font-bold text-white mb-4">Your AI-Generated Estimate</h2>
           {quote.error ? (
              <p className="text-red-400">{quote.error}</p>

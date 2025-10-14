@@ -1,14 +1,13 @@
-
 import React from 'react';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from './../components/icons/SolidIcons';
 
 const Contact: React.FC = () => {
   return (
-    <div className="animate-fade-in">
+    <div>
       <div className="text-center mb-16">
-        <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Nexus of Nexus</h1>
+        <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Contact Information</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-          Reach out through any channel. Our lines are always open, whether by voice, text, or digital smoke signal.
+          We are available to assist you. Please find our contact details and workshop hours below.
         </p>
       </div>
 
@@ -41,10 +40,17 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-black/30 h-96 rounded-lg border border-weathered-brass/30 flex items-center justify-center">
-            {/* Placeholder for an interactive map */}
-            <p className="text-gray-500">Interactive Map Loading...</p>
-            {/* In a real app, you would use Google Maps API or similar here */}
+        <div className="bg-black/30 h-96 rounded-lg border border-weathered-brass/30 overflow-hidden">
+            <iframe
+                title="T&T Auto Repairs Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27649.65879796851!2d30.99337478054761!3d-30.00165977114221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef603d3a5a7d77b%3A0x685b88527a29f315!2sIsipingo%20Beach%2C%20Isipingo%20Rail%2C%204133!5e0!3m2!1sen!2sza!4v1716382582736!5m2!1sen!2sza"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'grayscale(1) invert(1) contrast(0.8)' }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChatMessage, MessageSender } from '../types';
 import { getGeminiChatResponse } from '../services/geminiService';
@@ -74,12 +73,12 @@ const ChatWidget: React.FC = () => {
             <SpeakerWaveIcon className='h-6 w-6 text-kelp-emerald' />
             <h3 className="font-sans text-lg font-bold text-white">Sparky - Your AI Assistant</h3>
         </div>
-        <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
+        <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white" aria-label="Close chat">
           <XMarkIcon className="h-6 w-6" />
         </button>
       </header>
 
-      <div ref={chatBoxRef} className="flex-1 p-4 overflow-y-auto space-y-4">
+      <div ref={chatBoxRef} className="flex-1 p-4 overflow-y-auto space-y-4" role="log" aria-live="polite">
         {messages.map((msg, index) => (
           <div key={index} className={`flex items-end gap-2 ${msg.sender === MessageSender.USER ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-xs md:max-w-md lg:max-w-sm rounded-lg px-4 py-2 text-white ${msg.sender === MessageSender.USER ? 'bg-weathered-brass' : 'bg-kelp-emerald'}`}>
@@ -88,12 +87,13 @@ const ChatWidget: React.FC = () => {
           </div>
         ))}
         {isLoading && (
-          <div className="flex justify-start">
-            <div className="bg-kelp-emerald rounded-lg px-4 py-2 text-white">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse [animation-delay:0.2s]"></div>
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse [animation-delay:0.4s]"></div>
+          <div className="flex items-end gap-2 justify-start">
+            <div className="max-w-xs md:max-w-md lg:max-w-sm rounded-lg px-4 py-2 bg-kelp-emerald">
+              <div className="flex items-center justify-center space-x-1 h-6">
+                <span className="sr-only">Sparky is typing...</span>
+                <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
               </div>
             </div>
           </div>
@@ -102,13 +102,16 @@ const ChatWidget: React.FC = () => {
 
       <footer className="p-4 bg-black/50 border-t border-weathered-brass">
         <form onSubmit={handleFormSubmit} className="flex items-center space-x-2">
+          <label htmlFor="chat-input" className="sr-only">Ask Sparky anything</label>
           <input
+            id="chat-input"
             type="text"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             placeholder={isListening ? "Listening..." : "Ask me anything..."}
             className="flex-1 bg-gray-800 border border-gray-600 rounded-full py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-weathered-brass"
             disabled={isLoading || isListening}
+            autoFocus
           />
           {isAvailable && (
             <button

@@ -1,29 +1,28 @@
-
 import { Service, TeamMember } from './types';
 import { WrenchScrewdriverIcon, CpuChipIcon, LightBulbIcon, ShieldCheckIcon, CogIcon, FireIcon } from './components/icons/SolidIcons';
 
 export const SERVICES_DATA: Service[] = [
-  { id: 'diag', name: 'Advanced Diagnostics', description: 'Using wizardry and the latest tech to decode your car\'s deepest secrets. We speak fluent engine-light.', icon: CpuChipIcon },
-  { id: 'engine', name: 'Engine & Transmission', description: 'The heart and soul of your ride. From minor tweaks to major surgery, we keep the beat strong.', icon: CogIcon },
-  { id: 'brakes', name: 'Brakes & Suspension', description: 'Salt-resistant suspensions and precision brakes to handle Durban\'s coastal roads and surprise potholes.', icon: ShieldCheckIcon },
-  { id: 'electrical', name: 'Auto Electrical', description: 'Taming the gremlins in your car\'s wiring. We make sure the only sparks are from your driving passion.', icon: LightBulbIcon },
-  { id: 'performance', name: 'Performance Tuning', description: 'Unleash the beast. Custom tuning to ignite your drive and turn heads on the esplanade.', icon: FireIcon },
-  { id: 'general', name: 'General Maintenance', description: 'The essential check-ups to keep your vehicle humming with the rhythm of the Indian Ocean.', icon: WrenchScrewdriverIcon },
+  { id: 'diag', name: 'Advanced Diagnostics', description: "Utilizing state-of-the-art diagnostic equipment to accurately identify and resolve complex vehicle issues. We interpret fault codes with expert precision.", icon: CpuChipIcon },
+  { id: 'engine', name: 'Engine & Transmission', description: 'Comprehensive engine and transmission services, from routine maintenance to complete overhauls, ensuring optimal powertrain performance.', icon: CogIcon },
+  { id: 'brakes', name: 'Brakes & Suspension', description: 'Specialized brake and suspension services designed for superior safety and handling in all driving conditions.', icon: ShieldCheckIcon },
+  { id: 'electrical', name: 'Auto Electrical', description: 'Expert diagnosis and repair of complex automotive electrical systems, ensuring reliability and functionality.', icon: LightBulbIcon },
+  { id: 'performance', name: 'Performance Tuning', description: 'Custom performance tuning to optimize engine output, torque, and overall driving dynamics.', icon: FireIcon },
+  { id: 'general', name: 'General Maintenance', description: "Scheduled and preventative maintenance to ensure your vehicle's longevity and reliability, adhering to manufacturer specifications.", icon: WrenchScrewdriverIcon },
 ];
 
 export const TEAM_DATA: TeamMember[] = [
     {
         id: 't1',
-        name: 'Thabo "The Tactician" Ndlovu',
+        name: 'Thabo Ndlovu',
         role: 'Master Technician & Co-Founder',
-        bio: "With over 20 years of sand-to-speedway sagacity, Thabo's hands don't just fix cars; they converse with them in a language only true artisans understand. His secret? Zulu chants for stubborn starters.",
-        imageUrl: 'https://picsum.photos/seed/thabo/400/400'
+        bio: "With over 20 years of industry experience, Thabo is a master of mechanical systems. His meticulous approach ensures every repair is executed to the highest standard of quality and precision.",
+        imageUrl: 'https://images.unsplash.com/photo-1581299894007-aaa5329e3b24?q=80&w=800&auto=format&fit=crop'
     },
     {
         id: 't2',
-        name: 'Travis "The Tech-Prophet" Pillay',
-        role: 'Diagnostics Wizard & Co-Founder',
-        bio: 'Travis sees the digital soul of a vehicle. He wields diagnostic tools like a maestro, turning cryptic error codes into clear, actionable solutions that anticipate problems before they start.',
-        imageUrl: 'https://picsum.photos/seed/travis/400/400'
+        name: 'Travis Pillay',
+        role: 'Diagnostics Specialist & Co-Founder',
+        bio: 'Travis specializes in advanced vehicle diagnostics, leveraging cutting-edge technology to accurately identify electronic and system-level faults. His expertise ensures efficient and effective problem resolution.',
+        imageUrl: 'https://images.unsplash.com/photo-1622631024349-3540a1b63ead?q=80&w=800&auto=format&fit=crop'
     },
 ];

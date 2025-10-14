@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SERVICES_DATA } from '../constants';
 
@@ -30,8 +29,8 @@ const Booking: React.FC = () => {
   if (isSubmitted) {
     return (
       <div className="text-center max-w-lg mx-auto py-12 animate-fade-in">
-        <h1 className="font-sans text-4xl font-bold text-kelp-emerald">Yebo! You're Booked In.</h1>
-        <p className="text-gray-300 mt-4">Thank you, {formData.name}. We've received your request and will be in touch shortly via SMS or email to confirm your appointment. We're looking forward to seeing you and your {formData.vehicleMake} {formData.vehicleModel}.</p>
+        <h1 className="font-sans text-4xl font-bold text-kelp-emerald">Booking Request Submitted</h1>
+        <p className="text-gray-300 mt-4">Thank you, {formData.name}. We have received your booking request for your {formData.vehicleMake} {formData.vehicleModel}. A member of our team will contact you shortly to confirm your appointment details.</p>
         <button onClick={() => setIsSubmitted(false)} className="mt-8 bg-weathered-brass text-white font-bold py-3 px-6 rounded-lg hover:bg-yellow-700">
           Make Another Booking
         </button>
@@ -42,9 +41,9 @@ const Booking: React.FC = () => {
   return (
     <div className="animate-fade-in max-w-3xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Symbiotic Commerce Crucible</h1>
+        <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Schedule an Appointment</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-          Secure your spot with our streamlined booking system. Use your voice or the form below.
+          Please use the form below to request an appointment. Our team will contact you to confirm the date and time.
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 {
   "name": "T&T Auto Repairs & Diagnostics",
-  "description": "An unparalleled, hybrid static-dynamic website for T&T Auto Repairs & Diagnostics, fusing ocean-forged tenacity with diagnostic wizardry and an AI-orchestrated conversational fortress.",
+  "description": "Official website for T&T Auto Repairs & Diagnostics, offering world-class vehicle maintenance, advanced diagnostics, and an AI-powered customer service platform.",
   "requestFramePermissions": [
     "microphone"
   ]
