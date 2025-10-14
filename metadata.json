@@ -1,0 +1,7 @@
+{
+  "name": "T&T Auto Repairs & Diagnostics",
+  "description": "An unparalleled, hybrid static-dynamic website for T&T Auto Repairs & Diagnostics, fusing ocean-forged tenacity with diagnostic wizardry and an AI-orchestrated conversational fortress.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
