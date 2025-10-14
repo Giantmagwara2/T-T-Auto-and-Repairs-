@@ -15,6 +15,7 @@ const Footer: React.FC = () => {
             <h3 className="font-sans text-xl font-bold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li><a href="#/services" className="hover:text-zulu-terracotta transition-colors rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta">Our Services</a></li>
+              <li><a href="#/faq" className="hover:text-zulu-terracotta transition-colors rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta">FAQ</a></li>
               <li><a href="#/quote" className="hover:text-zulu-terracotta transition-colors rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta">Get a Quote</a></li>
               <li><a href="#/contact" className="hover:text-zulu-terracotta transition-colors rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta">Contact Us</a></li>
             </ul>

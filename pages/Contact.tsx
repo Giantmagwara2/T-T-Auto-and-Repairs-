@@ -18,11 +18,11 @@ const Contact: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <PhoneIcon className="h-6 w-6 text-zulu-terracotta"/>
-                <span className="text-gray-300">+27 (31) 555 0123 (Also on WhatsApp!)</span>
+                <span className="text-gray-300">+27 (31) 555-0123 (Also on WhatsApp!)</span>
               </div>
               <div className="flex items-center gap-4">
                 <EnvelopeIcon className="h-6 w-6 text-zulu-terracotta"/>
-                <span className="text-gray-300">bookings@tandtauto.co.za</span>
+                <span className="text-gray-300">info@tandtauto.co.za</span>
               </div>
               <div className="flex items-start gap-4">
                 <MapPinIcon className="h-6 w-6 text-zulu-terracotta mt-1"/>
@@ -42,8 +42,8 @@ const Contact: React.FC = () => {
 
         <div className="bg-black/30 h-96 rounded-lg border border-weathered-brass/30 overflow-hidden">
             <iframe
-                title="T&T Auto Repairs Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27649.65879796851!2d30.99337478054761!3d-30.00165977114221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef603d3a5a7d77b%3A0x685b88527a29f315!2sIsipingo%20Beach%2C%20Isipingo%20Rail%2C%204133!5e0!3m2!1sen!2sza!4v1716382582736!5m2!1sen!2sza"
+                title="T&T Auto Repairs & Diagnostics Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.784841933403!2d30.99958181510864!3d-29.98595708188339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef603d3a5a7d77b%3A0x685b88527a29f315!2sIsipingo%20Beach%2C%20Isipingo%20Rail%2C%204133!5e0!3m2!1sen!2sza!4v1622030000000!5m2!1sen!2sza"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'grayscale(1) invert(1) contrast(0.8)' }}

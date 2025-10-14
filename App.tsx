@@ -9,6 +9,7 @@ import Booking from './pages/Booking';
 import Quote from './pages/Quote';
 import Contact from './pages/Contact';
 import ChatWidget from './components/ChatWidget';
+import FAQ from './pages/FAQ';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/booking" element={<Booking />} />
             <Route path="/quote" element={<Quote />} />
             <Route path="/contact" element={<Contact />} />

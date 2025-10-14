@@ -14,7 +14,7 @@ const About: React.FC = () => {
       <div className="text-center mb-16">
         <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Our History</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-          Founded in 2015, T&T Auto Repairs was established with a commitment to providing superior automotive service and technical excellence. We are a team of highly skilled, certified technicians.
+          Founded in 2015, T&T Auto Repairs & Diagnostics was established with a commitment to providing superior automotive service and technical excellence. We are a team of highly skilled, certified technicians.
         </p>
       </div>
 
