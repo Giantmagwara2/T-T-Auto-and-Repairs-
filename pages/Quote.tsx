@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getGeminiQuote } from '../services/geminiService';
 import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
 import { MicrophoneIcon, PaperAirplaneIcon } from '../components/icons/SolidIcons';
+import ConfirmationModal from '../components/ConfirmationModal';
 
 interface QuoteResult {
     estimate_summary: string;
@@ -16,6 +17,7 @@ const Quote: React.FC = () => {
   const [quote, setQuote] = useState<QuoteResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const handleTranscript = (transcript: string) => {
     setProblemDescription(transcript);
@@ -23,14 +25,20 @@ const Quote: React.FC = () => {
   
   const { isListening, isAvailable, toggleListening } = useVoiceRecognition(handleTranscript);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!problemDescription.trim()) {
       setError('Please describe the problem.');
       return;
     }
-    setIsLoading(true);
     setError('');
+    // Open the confirmation modal
+    setIsModalOpen(true);
+  };
+
+  const handleConfirmQuote = async () => {
+    setIsModalOpen(false);
+    setIsLoading(true);
     setQuote(null);
     try {
       const responseText = await getGeminiQuote(problemDescription);
@@ -118,6 +126,14 @@ const Quote: React.FC = () => {
           )}
         </div>
       )}
+       <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmQuote}
+        title="Generate AI Estimate?"
+      >
+        <p className="text-sm text-gray-300">This will submit your description to our AI to generate a preliminary cost estimate. This is not a formal quote.<br/><br/>Do you want to proceed?</p>
+      </ConfirmationModal>
     </div>
   );
 };

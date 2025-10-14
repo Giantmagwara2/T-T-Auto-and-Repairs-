@@ -84,4 +84,22 @@ export const EnvelopeIcon: React.FC<{ className?: string }> = (props) => (
 );
 export const MapPinIcon: React.FC<{ className?: string }> = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 5.169-4.456 12.082 12.082 0 0 0 0-13.928 9.382 9.382 0 0 0-13.364 0 12.083 12.083 0 0 0 0 13.928 16.975 16.975 0 0 0 5.169 4.456ZM12 1.5a7.875 7.875 0 0 0-7.875 7.875c0 3.443 2.159 6.518 5.485 8.138a.44.44 0 0 0 .53 0c3.326-1.62 5.485-4.695 5.485-8.138A7.875 7.875 0 0 0 12 1.5
+      <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 5.169-4.456 12.082 12.082 0 0 0 0-13.928 9.382 9.382 0 0 0-13.364 0 12.083 12.083 0 0 0 0 13.928 16.975 16.975 0 0 0 5.169 4.456ZM12 1.5a7.875 7.875 0 0 0-7.875 7.875c0 3.443 2.159 6.518 5.485 8.138a.44.44 0 0 0 .53 0c3.326-1.62 5.485-4.695 5.485-8.138A7.875 7.875 0 0 0 12 1.5Z" clipRule="evenodd" />
+      <path d="M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5ZM10.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clipRule="evenodd" />
+    </svg>
+);
+export const Bars3Icon: React.FC<{ className?: string }> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path fillRule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
+    </svg>
+);
+export const ChevronDownIcon: React.FC<{ className?: string }> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+    </svg>
+);
+export const CheckIcon: React.FC<{ className?: string }> = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clipRule="evenodd" />
+  </svg>
+);

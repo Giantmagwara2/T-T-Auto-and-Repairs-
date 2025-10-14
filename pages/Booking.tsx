@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SERVICES_DATA } from '../constants';
+import ConfirmationModal from '../components/ConfirmationModal';
 
 const Booking: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Booking: React.FC = () => {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,17 +23,31 @@ const Booking: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would integrate with a real booking system like Calendly or a backend service.
+    // Open the confirmation modal instead of submitting directly
+    setIsModalOpen(true);
+  };
+
+  const handleConfirmBooking = () => {
+    // This is the actual submission logic
     console.log('Booking submitted:', formData);
     setIsSubmitted(true);
+    setIsModalOpen(false);
   };
+
 
   if (isSubmitted) {
     return (
       <div className="text-center max-w-lg mx-auto py-12 animate-fade-in">
         <h1 className="font-sans text-4xl font-bold text-kelp-emerald">Booking Request Submitted</h1>
         <p className="text-gray-300 mt-4">Thank you, {formData.name}. We have received your booking request for your {formData.vehicleMake} {formData.vehicleModel}. A member of our team will contact you shortly to confirm your appointment details.</p>
-        <button onClick={() => setIsSubmitted(false)} className="mt-8 bg-weathered-brass text-white font-bold py-3 px-6 rounded-lg hover:bg-yellow-700">
+        <button onClick={() => {
+          setIsSubmitted(false);
+          // Reset form for new booking
+          setFormData({
+            name: '', phone: '', email: '', vehicleMake: '', vehicleModel: '',
+            vehicleYear: '', serviceType: '', preferredDate: '', message: ''
+          });
+        }} className="mt-8 bg-weathered-brass text-white font-bold py-3 px-6 rounded-lg hover:bg-yellow-700">
           Make Another Booking
         </button>
       </div>
@@ -106,6 +122,20 @@ const Booking: React.FC = () => {
           </button>
         </div>
       </form>
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmBooking}
+        title="Confirm Booking Request"
+      >
+        <p className="text-sm text-gray-300">
+          You are about to request a booking for a <span className="font-bold">{formData.serviceType || 'service'}</span> for your 
+          <span className="font-bold"> {formData.vehicleYear} {formData.vehicleMake} {formData.vehicleModel}</span> on
+          <span className="font-bold"> {formData.preferredDate}</span>.
+          <br/><br/>
+          Please ensure your contact details are correct so our team can reach you.
+        </p>
+      </ConfirmationModal>
     </div>
   );
 };
