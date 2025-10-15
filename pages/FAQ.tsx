@@ -47,7 +47,7 @@ const FAQ: React.FC = () => {
     <div className="animate-fade-in max-w-4xl mx-auto">
       <div className="text-center mb-16">
         <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Frequently Asked Questions</h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-brand-silver">
           Find quick answers to common questions about our services, booking process, and pricing.
         </p>
       </div>
@@ -55,7 +55,7 @@ const FAQ: React.FC = () => {
       <div className="space-y-12">
         {Object.entries(faqs).map(([category, questions], categoryIndex) => (
           <div key={category} className="animate-slide-in-up" style={{ animationDelay: `${categoryIndex * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}>
-            <h2 className="font-sans text-2xl font-bold text-weathered-brass mb-6 border-b-2 border-weathered-brass/30 pb-2">{category}</h2>
+            <h2 className="font-sans text-2xl font-bold text-brand-blue mb-6 border-b-2 border-brand-blue/30 pb-2">{category}</h2>
             <div className="space-y-4">
               {questions.map((faq, index) => (
                 <Accordion key={index} title={faq.question}>
@@ -67,10 +67,10 @@ const FAQ: React.FC = () => {
         ))}
       </div>
       
-      <div className="mt-16 text-center bg-black/30 p-8 rounded-lg border border-weathered-brass/30">
+      <div className="mt-16 text-center bg-black/30 p-8 rounded-lg border border-brand-silver/20">
         <h2 className="font-sans text-2xl font-bold text-white mb-4">Still have questions?</h2>
-        <p className="text-gray-400 mb-6">Our AI assistant, Sparky, is available 24/7 in the chat widget, or you can contact our expert team directly.</p>
-        <a href="#/contact" className="bg-zulu-terracotta text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta">
+        <p className="text-brand-silver mb-6">Our AI assistant, Sparky, is available 24/7 in the chat widget, or you can contact our expert team directly.</p>
+        <a href="#/contact" className="bg-brand-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-dark focus:ring-brand-blue">
           Contact Us
         </a>
       </div>

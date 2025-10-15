@@ -58,7 +58,7 @@ const ChatWidget: React.FC = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-5 right-5 bg-kelp-emerald text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-transform transform hover:scale-110 z-50 animate-pulse-slow"
+        className="fixed bottom-5 right-5 bg-brand-blue text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-110 z-50 animate-pulse-slow"
         aria-label="Open Chat"
       >
         <ChatBubbleLeftRightIcon className="h-8 w-8" />
@@ -67,13 +67,13 @@ const ChatWidget: React.FC = () => {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 w-full max-w-sm h-[70vh] max-h-[600px] flex flex-col bg-ocean-dark border-2 border-weathered-brass rounded-lg shadow-2xl z-50 animate-fade-in">
-      <header className="flex items-center justify-between p-4 bg-black/50 border-b border-weathered-brass">
+    <div className="fixed bottom-5 right-5 w-full max-w-sm h-[70vh] max-h-[600px] flex flex-col bg-brand-dark border-2 border-brand-blue/50 rounded-lg shadow-2xl z-50 animate-fade-in">
+      <header className="flex items-center justify-between p-4 bg-black/50 border-b border-brand-blue/50">
         <div className='flex items-center space-x-2'>
-            <SpeakerWaveIcon className='h-6 w-6 text-kelp-emerald' />
+            <SpeakerWaveIcon className='h-6 w-6 text-brand-blue' />
             <h3 className="font-sans text-lg font-bold text-white">Sparky - Your AI Assistant</h3>
         </div>
-        <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white" aria-label="Close chat">
+        <button onClick={() => setIsOpen(false)} className="text-brand-silver hover:text-white" aria-label="Close chat">
           <XMarkIcon className="h-6 w-6" />
         </button>
       </header>
@@ -81,14 +81,14 @@ const ChatWidget: React.FC = () => {
       <div ref={chatBoxRef} className="flex-1 p-4 overflow-y-auto space-y-4" role="log" aria-live="polite">
         {messages.map((msg, index) => (
           <div key={index} className={`flex items-end gap-2 ${msg.sender === MessageSender.USER ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-xs md:max-w-md lg:max-w-sm rounded-lg px-4 py-2 text-white ${msg.sender === MessageSender.USER ? 'bg-weathered-brass' : 'bg-kelp-emerald'}`}>
+            <div className={`max-w-xs md:max-w-md lg:max-w-sm rounded-lg px-4 py-2 text-white ${msg.sender === MessageSender.USER ? 'bg-brand-blue' : 'bg-gray-700'}`}>
               <p className="text-sm">{msg.text}</p>
             </div>
           </div>
         ))}
         {isLoading && (
           <div className="flex items-end gap-2 justify-start">
-            <div className="max-w-xs md:max-w-md lg:max-w-sm rounded-lg px-4 py-2 bg-kelp-emerald">
+            <div className="max-w-xs md:max-w-md lg:max-w-sm rounded-lg px-4 py-2 bg-gray-700">
               <div className="flex items-center justify-center space-x-1 h-6">
                 <span className="sr-only">Sparky is typing...</span>
                 <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></div>
@@ -100,7 +100,7 @@ const ChatWidget: React.FC = () => {
         )}
       </div>
 
-      <footer className="p-4 bg-black/50 border-t border-weathered-brass">
+      <footer className="p-4 bg-black/50 border-t border-brand-blue/50">
         <form onSubmit={handleFormSubmit} className="flex items-center space-x-2">
           <label htmlFor="chat-input" className="sr-only">Ask Sparky anything</label>
           <input
@@ -109,7 +109,7 @@ const ChatWidget: React.FC = () => {
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             placeholder={isListening ? "Listening..." : "Ask me anything..."}
-            className="flex-1 bg-gray-800 border border-gray-600 rounded-full py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-weathered-brass"
+            className="flex-1 bg-gray-800 border border-gray-600 rounded-full py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-blue"
             disabled={isLoading || isListening}
             autoFocus
           />
@@ -117,7 +117,7 @@ const ChatWidget: React.FC = () => {
             <button
               type="button"
               onClick={toggleListening}
-              className={`p-2 rounded-full transition-colors ${isListening ? 'bg-red-500 animate-pulse' : 'bg-zulu-terracotta hover:bg-red-700'}`}
+              className={`p-2 rounded-full transition-colors ${isListening ? 'bg-red-500 animate-pulse' : 'bg-brand-blue hover:bg-blue-600'}`}
               disabled={isLoading}
               aria-label="Use microphone"
             >
@@ -126,13 +126,16 @@ const ChatWidget: React.FC = () => {
           )}
           <button
             type="submit"
-            className="p-2 bg-zulu-terracotta rounded-full hover:bg-red-700 transition-colors disabled:bg-gray-600"
+            className="p-2 bg-brand-blue rounded-full hover:bg-blue-600 transition-colors disabled:bg-gray-600"
             disabled={isLoading || !userInput}
             aria-label="Send message"
           >
             <PaperAirplaneIcon className="h-6 w-6 text-white" />
           </button>
         </form>
+         <p className="text-xs text-brand-silver text-center mt-2 px-2">
+          Disclaimer: AI responses are for guidance. Please confirm critical details with our staff.
+        </p>
       </footer>
     </div>
   );

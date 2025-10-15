@@ -56,14 +56,14 @@ const Quote: React.FC = () => {
     <div className="animate-fade-in max-w-3xl mx-auto">
       <div className="text-center mb-12">
         <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">AI-Powered Estimate Tool</h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-brand-silver">
           Describe your vehicle's issue to receive an instant, AI-generated preliminary cost estimate.
         </p>
       </div>
 
-      <div className="bg-black/30 p-8 rounded-lg border border-weathered-brass/30">
+      <div className="bg-black/30 p-8 rounded-lg border border-brand-silver/20">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="problemDescription" className="block text-sm font-medium text-gray-300 mb-2">Describe the issue with your vehicle</label>
+          <label htmlFor="problemDescription" className="block text-sm font-medium text-brand-light mb-2">Describe the issue with your vehicle</label>
           <div className="relative">
             <textarea
               id="problemDescription"
@@ -71,13 +71,13 @@ const Quote: React.FC = () => {
               value={problemDescription}
               onChange={(e) => setProblemDescription(e.target.value)}
               placeholder="e.g., 'There's a clicking sound when I turn left, and the engine is making a whirring noise after driving on the M4...'"
-              className="block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass pr-12"
+              className="block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-brand-blue focus:border-brand-blue pr-12"
             />
             {isAvailable && (
               <button
                 type="button"
                 onClick={toggleListening}
-                className={`absolute top-3 right-3 p-2 rounded-full transition-colors ${isListening ? 'bg-red-500 animate-pulse' : 'bg-zulu-terracotta hover:bg-red-700'}`}
+                className={`absolute top-3 right-3 p-2 rounded-full transition-colors ${isListening ? 'bg-red-500 animate-pulse' : 'bg-brand-blue hover:bg-blue-600'}`}
                 aria-label="Use microphone"
               >
                 <MicrophoneIcon className="h-5 w-5 text-white" />
@@ -87,7 +87,7 @@ const Quote: React.FC = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="mt-4 w-full flex items-center justify-center gap-2 bg-zulu-terracotta text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 disabled:bg-gray-600 disabled:cursor-not-allowed"
+            className="mt-4 w-full flex items-center justify-center gap-2 bg-brand-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-transform transform hover:scale-105 disabled:bg-gray-600 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Analyzing Data...' : 'Generate Quote'}
             {!isLoading && <PaperAirplaneIcon className="h-5 w-5" />}
@@ -98,8 +98,8 @@ const Quote: React.FC = () => {
 
       {isLoading && (
         <div className="text-center mt-8" role="status" aria-live="polite">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-weathered-brass"></div>
-            <p className="text-gray-400 mt-2">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-blue"></div>
+            <p className="text-brand-silver mt-2">
               <span className="sr-only">Loading.</span>
               Generating your estimate...
             </p>
@@ -107,21 +107,21 @@ const Quote: React.FC = () => {
       )}
 
       {quote && !isLoading && (
-        <div className="mt-8 bg-kelp-emerald/10 p-8 rounded-lg border-2 border-kelp-emerald animate-fade-in" aria-live="polite">
+        <div className="mt-8 bg-brand-blue/10 p-8 rounded-lg border-2 border-brand-blue/50 animate-fade-in" aria-live="polite">
           <h2 className="font-sans text-2xl font-bold text-white mb-4">Your AI-Generated Estimate</h2>
           {quote.error ? (
              <p className="text-red-400">{quote.error}</p>
           ) : (
             <>
-                <p className="text-gray-300 italic mb-4">"{quote.estimate_summary}"</p>
+                <p className="text-brand-silver italic mb-4">"{quote.estimate_summary}"</p>
                 <div className="space-y-2 text-lg">
-                    <div className="flex justify-between"><span className="text-gray-400">Estimated Parts:</span> <span className="font-bold text-white">R {quote.estimated_parts_cost?.toFixed(2)}</span></div>
-                    <div className="flex justify-between"><span className="text-gray-400">Estimated Labor:</span> <span className="font-bold text-white">R {quote.estimated_labor_cost?.toFixed(2)}</span></div>
-                    <div className="flex justify-between text-2xl border-t-2 border-weathered-brass mt-4 pt-2"><span className="text-weathered-brass font-bold">Total Estimate:</span> <span className="font-bold text-weathered-brass">R {quote.total_estimate?.toFixed(2)}</span></div>
+                    <div className="flex justify-between"><span className="text-brand-silver">Estimated Parts:</span> <span className="font-bold text-white">R {quote.estimated_parts_cost?.toFixed(2)}</span></div>
+                    <div className="flex justify-between"><span className="text-brand-silver">Estimated Labor:</span> <span className="font-bold text-white">R {quote.estimated_labor_cost?.toFixed(2)}</span></div>
+                    <div className="flex justify-between text-2xl border-t-2 border-brand-blue mt-4 pt-2"><span className="text-brand-blue font-bold">Total Estimate:</span> <span className="font-bold text-brand-blue">R {quote.total_estimate?.toFixed(2)}</span></div>
                 </div>
-                <div className="mt-6 p-4 rounded-lg bg-weathered-brass/10 border border-weathered-brass/50">
-                  <p className="text-sm font-bold text-weathered-brass">Disclaimer: AI-Generated Estimate</p>
-                  <p className="text-sm text-gray-300 mt-2">
+                <div className="mt-6 p-4 rounded-lg bg-brand-blue/10 border border-brand-blue/50">
+                  <p className="text-sm font-bold text-brand-blue">Disclaimer: AI-Generated Estimate</p>
+                  <p className="text-sm text-brand-silver mt-2">
                       This is a preliminary, non-binding estimate generated by an AI based on your description. Actual costs may vary and will only be confirmed after a physical inspection by our expert technicians. A formal quote will be provided for your approval before any work is undertaken.
                   </p>
                 </div>
@@ -135,7 +135,7 @@ const Quote: React.FC = () => {
         onConfirm={handleConfirmQuote}
         title="Generate AI Estimate?"
       >
-        <p className="text-sm text-gray-300">This will submit your description to our AI to generate a preliminary cost estimate. This is not a formal quote.<br/><br/>Do you want to proceed?</p>
+        <p className="text-sm text-brand-silver">This will submit your description to our AI to generate a preliminary cost estimate. This is not a formal quote.<br/><br/>Do you want to proceed?</p>
       </ConfirmationModal>
     </div>
   );

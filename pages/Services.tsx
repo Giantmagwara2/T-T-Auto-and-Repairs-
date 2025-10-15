@@ -7,7 +7,7 @@ const Services: React.FC = () => {
     <div>
       <div className="text-center mb-16">
         <h1 className="font-sans text-4xl md:text-5xl font-extrabold text-white">Our Services</h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-brand-silver">
           From routine maintenance to high-performance tuning, we offer a complete suite of world-class services, executed with technical precision.
         </p>
       </div>
@@ -20,10 +20,10 @@ const Services: React.FC = () => {
         ))}
       </div>
 
-       <div className="mt-16 text-center bg-black/30 p-8 rounded-lg border border-weathered-brass/30">
+       <div className="mt-16 text-center bg-black/30 p-8 rounded-lg border border-brand-silver/20">
         <h2 className="font-sans text-2xl font-bold text-white mb-4">Don't see what you're looking for?</h2>
-        <p className="text-gray-400 mb-6">Our expertise is vast. If you have a specific need or a custom project in mind, get in touch with our AI assistant or contact us directly.</p>
-        <a href="#/contact" className="bg-weathered-brass text-white font-bold py-3 px-6 rounded-lg hover:bg-yellow-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-weathered-brass">
+        <p className="text-brand-silver mb-6">Our expertise is vast. If you have a specific need or a custom project in mind, get in touch with our AI assistant or contact us directly.</p>
+        <a href="#/contact" className="bg-brand-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-dark focus:ring-brand-blue">
           Contact Our Experts
         </a>
       </div>
