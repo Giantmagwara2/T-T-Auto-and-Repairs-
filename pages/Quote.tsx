@@ -71,7 +71,7 @@ const Quote: React.FC = () => {
               value={problemDescription}
               onChange={(e) => setProblemDescription(e.target.value)}
               placeholder="e.g., 'There's a clicking sound when I turn left, and the engine is making a whirring noise after driving on the M4...'"
-              className="block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-brand-blue focus:border-brand-blue pr-12"
+              className="block w-full bg-brand-dark/50 border border-brand-silver/30 rounded-md shadow-sm text-white focus:ring-brand-blue focus:border-brand-blue pr-12"
             />
             {isAvailable && (
               <button

@@ -42,7 +42,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onClose, 
           </button>
           <button
             onClick={onConfirm}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold bg-kelp-emerald text-white hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-dark focus:ring-kelp-emerald"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold bg-brand-blue text-white hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-dark focus:ring-brand-blue"
           >
             <CheckIcon className="h-5 w-5" />
             Confirm

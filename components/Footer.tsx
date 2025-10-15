@@ -1,5 +1,6 @@
 import React from 'react';
 import { FacebookIcon, InstagramIcon, TikTokIcon } from './icons/SocialIcons';
+import { LOGO_DATA_URL } from '../constants';
 
 const Footer: React.FC = () => {
   return (
@@ -7,7 +8,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-sans text-xl font-bold text-white mb-4">T&T Auto Repairs & Diagnostics</h3>
+            <img src={LOGO_DATA_URL} alt="T&T Auto Repairs & Diagnostics Logo" className="w-48 mb-4" />
             <p className="text-sm">Providing world-class automotive repair and diagnostic services with a commitment to technical excellence and customer satisfaction.</p>
             <p className="text-sm mt-2">Isipingo Beach, Durban, KZN</p>
           </div>

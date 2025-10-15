@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { CogIcon } from './icons/OutlineIcons';
 import { Bars3Icon, XMarkIcon } from './icons/SolidIcons';
+import { LOGO_DATA_URL } from '../constants';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,9 +25,8 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <NavLink to="/" className="flex items-center space-x-2 text-white">
-              <CogIcon className="h-10 w-10 text-brand-blue animate-spin [animation-duration:10s]" />
-              <span className="font-sans text-lg font-bold">T&T Auto Repairs & Diagnostics</span>
+            <NavLink to="/">
+              <img className="h-16 w-auto" src={LOGO_DATA_URL} alt="T&T Auto Repairs & Diagnostics Logo" />
             </NavLink>
           </div>
           <div className="hidden lg:block">
@@ -51,32 +50,44 @@ const Header: React.FC = () => {
               aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? (
-                <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-              )}
+              <div className="relative h-6 w-6">
+                 <Bars3Icon
+                  className={`absolute h-6 w-6 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'
+                  }`}
+                  aria-hidden="true"
+                />
+                <XMarkIcon
+                  className={`absolute h-6 w-6 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'
+                  }`}
+                  aria-hidden="true"
+                />
+              </div>
             </button>
           </div>
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="lg:hidden" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={({ isActive }) => `block ${linkClass} ${isActive ? activeLinkClass : inactiveLinkClass}`}
-              >
-                {link.name}
-              </NavLink>
-            ))}
-          </div>
+      <div
+        className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${
+            isMenuOpen ? 'max-h-96 border-t border-brand-blue/20' : 'max-h-0'
+        }`}
+        id="mobile-menu"
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) => `block ${linkClass} ${isActive ? activeLinkClass : inactiveLinkClass}`}
+            >
+              {link.name}
+            </NavLink>
+          ))}
         </div>
-      )}
+      </div>
     </header>
   );
 };

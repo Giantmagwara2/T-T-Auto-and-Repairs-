@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICES_DATA } from '../constants';
+import { SERVICES_DATA, LOGO_DATA_URL } from '../constants';
 import ServiceCard from '../components/ServiceCard';
 import { ArrowRightIcon } from '../components/icons/SolidIcons';
 
@@ -9,25 +9,20 @@ const Home: React.FC = () => {
     <div className="space-y-24">
       {/* Hero Section */}
       <section className="text-center">
-        <div className="relative rounded-lg overflow-hidden h-[60vh] flex items-center justify-center">
-          <video
-            src="https://videos.pexels.com/video-files/4434246/4434246-hd_1920_1080_30fps.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-20"
-            poster="https://images.unsplash.com/photo-1553522934-40a552541bee?q=80&w=1470&auto=format&fit=crop"
-          >
-            Your browser does not support the video tag.
-          </video>
-           <div className="absolute inset-0 bg-brand-dark/60"></div>
-          <div className="relative z-10 p-8">
-            <h1 className="font-sans text-4xl md:text-6xl font-extrabold text-white leading-tight animate-text-focus-in">
-              <span className="text-brand-blue">World-Class Automotive Solutions:</span> Precision Engineering for Peak Performance
+        <div className="relative rounded-lg overflow-hidden h-[70vh] flex items-center justify-center">
+          <img
+            src="https://images.unsplash.com/photo-1487744470263-ae74f4d01a68?q=80&w=1470&auto=format&fit=crop"
+            alt="High performance car engine"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+           <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
+          <div className="relative z-10 p-8 flex flex-col items-center justify-center">
+             <img src={LOGO_DATA_URL} alt="T&T Auto Repair Logo" className="w-48 md:w-64 drop-shadow-2xl" />
+            <h1 className="font-sans text-2xl md:text-3xl font-extrabold text-white leading-tight animate-text-focus-in mt-4 tracking-widest uppercase" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+              Where Precision Meets Performance
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-brand-silver animate-fade-in [animation-delay:0.5s]">
-              Delivering world-class precision and technical expertise. With over 20 years of industry experience, we are Durban's trusted automotive specialists.
+              Durban's trusted automotive specialists for maintenance, diagnostics, and performance tuning.
             </p>
             <div className="mt-8 flex justify-center gap-4 animate-fade-in [animation-delay:1s]">
               <Link to="/booking" className="inline-flex items-center gap-2 bg-brand-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-dark focus:ring-brand-blue animate-pulse-slow">
@@ -80,10 +75,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* Eco Virtue Section */}
-      <section className="bg-kelp-emerald/10 border-2 border-kelp-emerald rounded-lg p-8 text-center">
+      <section className="bg-brand-blue/10 border-2 border-brand-blue rounded-lg p-8 text-center">
          <h2 className="font-sans text-3xl font-bold text-white mb-2">Commitment to Sustainability</h2>
          <p className="text-brand-light max-w-3xl mx-auto">We are committed to environmentally responsible practices, including advanced waste oil management and the use of sustainable materials where possible.</p>
-         <div className="mt-4 text-2xl font-bold text-kelp-emerald">Environmental Impact: 1,234 kg CO2 Saved To Date</div>
+         <div className="mt-4 text-2xl font-bold text-brand-blue">Environmental Impact: 1,234 kg CO2 Saved To Date</div>
       </section>
 
     </div>
