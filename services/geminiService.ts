@@ -115,14 +115,14 @@ export const getGeminiChatResponse = async (history: string): Promise<string> =>
   }
 };
 
-export const getGeminiQuote = async (problemDescription: string): Promise<string> => {
+export const getGeminiQuote = async (problemDescription: string, vehicleMake: string, vehicleModel: string): Promise<string> => {
   if (!API_KEY) {
     return MOCK_QUOTE_RESPONSE.text;
   }
   try {
     const response = await ai.models.generateContent({
         model: quoteModel,
-        contents: `Generate a quote for this problem: ${problemDescription}`,
+        contents: `Generate a quote for a ${vehicleMake} ${vehicleModel} with this problem: ${problemDescription}`,
         config: {
             systemInstruction: quoteSystemInstruction,
             responseMimeType: "application/json",
