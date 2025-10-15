@@ -3,6 +3,7 @@ import { getGeminiQuote } from '../services/geminiService';
 import { useVoiceRecognition } from '../hooks/useVoiceRecognition';
 import { MicrophoneIcon, PaperAirplaneIcon, CogIcon, WrenchScrewdriverIcon } from '../components/icons/SolidIcons';
 import ConfirmationModal from '../components/ConfirmationModal';
+import Spinner from '../components/Spinner';
 
 interface QuoteResult {
     estimate_summary: string;
@@ -139,9 +140,8 @@ const Quote: React.FC = () => {
 
       {isLoading && (
         <div className="text-center mt-8" role="status" aria-live="polite">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-blue"></div>
+            <Spinner size="md" />
             <p className="text-brand-silver mt-2">
-              <span className="sr-only">Loading.</span>
               Generating your estimate...
             </p>
         </div>
