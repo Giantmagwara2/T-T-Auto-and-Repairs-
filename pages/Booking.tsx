@@ -14,17 +14,61 @@ const Booking: React.FC = () => {
     preferredDate: '',
     message: '',
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) newErrors.name = 'Full Name is required.';
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email Address is required.';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+    
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone Number is required.';
+    } else if (!/^\+?\d{10,15}$/.test(formData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Please enter a valid phone number.';
+    }
+    
+    if (!formData.vehicleMake.trim()) newErrors.vehicleMake = 'Vehicle Make is required.';
+    if (!formData.vehicleModel.trim()) newErrors.vehicleModel = 'Vehicle Model is required.';
+    
+    if (!formData.vehicleYear.trim()) {
+      newErrors.vehicleYear = 'Year is required.';
+    } else if (isNaN(parseInt(formData.vehicleYear)) || parseInt(formData.vehicleYear) < 1900 || parseInt(formData.vehicleYear) > new Date().getFullYear() + 1) {
+      newErrors.vehicleYear = 'Please enter a valid year.';
+    }
+
+    if (!formData.serviceType) newErrors.serviceType = 'Please select a service.';
+    if (!formData.preferredDate) newErrors.preferredDate = 'Please select a preferred date.';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Clear error for the field being edited
+    if (errors[name]) {
+      setErrors(prevErrors => {
+        const newErrors = { ...prevErrors };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Open the confirmation modal instead of submitting directly
-    setIsModalOpen(true);
+    if (validateForm()) {
+      setIsModalOpen(true);
+    }
   };
 
   const handleConfirmBooking = () => {
@@ -34,7 +78,6 @@ const Booking: React.FC = () => {
     setIsModalOpen(false);
   };
 
-
   if (isSubmitted) {
     return (
       <div className="text-center max-w-lg mx-auto py-12 animate-fade-in">
@@ -42,7 +85,6 @@ const Booking: React.FC = () => {
         <p className="text-gray-300 mt-4">Thank you, {formData.name}. We have received your booking request for your {formData.vehicleMake} {formData.vehicleModel}. A member of our team will contact you shortly to confirm your appointment details.</p>
         <button onClick={() => {
           setIsSubmitted(false);
-          // Reset form for new booking
           setFormData({
             name: '', phone: '', email: '', vehicleMake: '', vehicleModel: '',
             vehicleYear: '', serviceType: '', preferredDate: '', message: ''
@@ -63,52 +105,60 @@ const Booking: React.FC = () => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 bg-black/30 p-8 rounded-lg border border-weathered-brass/30">
+      <form onSubmit={handleSubmit} className="space-y-6 bg-black/30 p-8 rounded-lg border border-weathered-brass/30" noValidate>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300">Full Name</label>
-            <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass" />
+            <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.name ? 'border-red-500' : 'border-gray-600'}`} />
+            {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
           </div>
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-gray-300">Phone Number</label>
-            <input type="tel" name="phone" id="phone" required value={formData.phone} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass" />
+            <input type="tel" name="phone" id="phone" required value={formData.phone} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.phone ? 'border-red-500' : 'border-gray-600'}`} />
+            {errors.phone && <p className="mt-1 text-sm text-red-400">{errors.phone}</p>}
           </div>
         </div>
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-300">Email Address</label>
-          <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass" />
+          <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.email ? 'border-red-500' : 'border-gray-600'}`} />
+          {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <label htmlFor="vehicleMake" className="block text-sm font-medium text-gray-300">Vehicle Make</label>
-            <input type="text" name="vehicleMake" id="vehicleMake" required value={formData.vehicleMake} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass" />
+            <input type="text" name="vehicleMake" id="vehicleMake" required value={formData.vehicleMake} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.vehicleMake ? 'border-red-500' : 'border-gray-600'}`} />
+            {errors.vehicleMake && <p className="mt-1 text-sm text-red-400">{errors.vehicleMake}</p>}
           </div>
           <div>
             <label htmlFor="vehicleModel" className="block text-sm font-medium text-gray-300">Vehicle Model</label>
-            <input type="text" name="vehicleModel" id="vehicleModel" required value={formData.vehicleModel} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass" />
+            <input type="text" name="vehicleModel" id="vehicleModel" required value={formData.vehicleModel} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.vehicleModel ? 'border-red-500' : 'border-gray-600'}`} />
+            {errors.vehicleModel && <p className="mt-1 text-sm text-red-400">{errors.vehicleModel}</p>}
           </div>
           <div>
             <label htmlFor="vehicleYear" className="block text-sm font-medium text-gray-300">Year</label>
-            <input type="number" name="vehicleYear" id="vehicleYear" required value={formData.vehicleYear} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass" />
+            <input type="number" name="vehicleYear" id="vehicleYear" required value={formData.vehicleYear} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.vehicleYear ? 'border-red-500' : 'border-gray-600'}`} />
+            {errors.vehicleYear && <p className="mt-1 text-sm text-red-400">{errors.vehicleYear}</p>}
           </div>
         </div>
 
         <div>
           <label htmlFor="serviceType" className="block text-sm font-medium text-gray-300">Service Required</label>
-          <select id="serviceType" name="serviceType" required value={formData.serviceType} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass">
+          <select id="serviceType" name="serviceType" required value={formData.serviceType} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.serviceType ? 'border-red-500' : 'border-gray-600'}`}>
             <option value="">Select a service...</option>
             {SERVICES_DATA.map(service => (
               <option key={service.id} value={service.name}>{service.name}</option>
             ))}
             <option value="Other">Other (Please describe below)</option>
           </select>
+          {errors.serviceType && <p className="mt-1 text-sm text-red-400">{errors.serviceType}</p>}
         </div>
         
         <div>
           <label htmlFor="preferredDate" className="block text-sm font-medium text-gray-300">Preferred Date</label>
-          <input type="date" name="preferredDate" id="preferredDate" required value={formData.preferredDate} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass" />
+          <input type="date" name="preferredDate" id="preferredDate" required value={formData.preferredDate} onChange={handleChange} className={`mt-1 block w-full bg-gray-800 border rounded-md shadow-sm text-white focus:ring-weathered-brass focus:border-weathered-brass ${errors.preferredDate ? 'border-red-500' : 'border-gray-600'}`} />
+          {errors.preferredDate && <p className="mt-1 text-sm text-red-400">{errors.preferredDate}</p>}
         </div>
 
         <div>
