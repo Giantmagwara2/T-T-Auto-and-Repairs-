@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { SERVICES_DATA, LOGO_DATA_URL } from '../constants';
 import ServiceCard from '../components/ServiceCard';
 import { ArrowRightIcon } from '../components/icons/SolidIcons';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const Home: React.FC = () => {
+  const co2Saved = useAnimatedCounter(1234, 2500);
+
   return (
     <div className="space-y-24">
       {/* Hero Section */}
@@ -14,6 +17,8 @@ const Home: React.FC = () => {
             src="https://images.unsplash.com/photo-1553941243-0f0a5a54e9a3?q=80&w=1470&auto=format&fit=crop"
             alt="High performance car engine"
             className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            decoding="auto"
           />
            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
           <div className="relative z-10 p-8 flex flex-col items-center justify-center">
@@ -67,7 +72,7 @@ const Home: React.FC = () => {
             'https://images.unsplash.com/photo-1522881451255-f5f8b864e036?q=80&w=800&auto=format&fit=crop'
           ].map((imgSrc, i) => (
              <div key={i} className="bg-black/30 aspect-square rounded-lg overflow-hidden shadow-lg border border-brand-silver/20 animate-slide-in-up" style={{ animationDelay: `${i * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}>
-                <img src={imgSrc} alt={`Customer car repair ${i + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"/>
+                <img src={imgSrc} alt={`Customer car repair ${i + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" loading="lazy" decoding="async"/>
              </div>
           ))}
         </div>
@@ -78,7 +83,7 @@ const Home: React.FC = () => {
       <section className="bg-brand-blue/10 border-2 border-brand-blue rounded-lg p-8 text-center">
          <h2 className="font-sans text-3xl font-bold text-white mb-2">Commitment to Sustainability</h2>
          <p className="text-brand-light max-w-3xl mx-auto">We are committed to environmentally responsible practices, including advanced waste oil management and the use of sustainable materials where possible.</p>
-         <div className="mt-4 text-2xl font-bold text-brand-blue">Environmental Impact: 1,234 kg CO2 Saved To Date</div>
+         <div className="mt-4 text-2xl font-bold text-brand-blue tabular-nums tracking-wider">{co2Saved.toLocaleString()} kg CO2 Saved To Date</div>
       </section>
 
     </div>

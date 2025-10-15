@@ -73,31 +73,19 @@ const quoteSchema = {
   required: ['estimate_summary', 'estimated_parts_cost', 'estimated_labor_cost', 'total_estimate'],
 };
 
-// Mock response for when API key is not available
-// FIX: Removed explicit `GenerateContentResponse` type from mock objects to resolve compilation errors due to missing properties. Since only the `.text` property is used, a complete mock is unnecessary.
-const MOCK_CHAT_RESPONSE = {
-  text: "Welcome to T&T Auto Repairs & Diagnostics. I'm Sparky, your virtual assistant. How can I help you today? (Note: API key not found, this is a mock response).",
-  functionCalls: [],
-  candidates: [],
-  usageMetadata: { promptTokenCount: 0, candidatesTokenCount: 0, totalTokenCount: 0 },
-};
+// Mock responses for when API key is not available.
+const MOCK_CHAT_RESPONSE_TEXT = "Welcome to T&T Auto Repairs & Diagnostics. I'm Sparky, your virtual assistant. How can I help you today? (Note: API key not found, this is a mock response).";
 
-// FIX: Removed explicit `GenerateContentResponse` type from mock objects to resolve compilation errors due to missing properties. Since only the `.text` property is used, a complete mock is unnecessary.
-const MOCK_QUOTE_RESPONSE = {
-    text: JSON.stringify({
-      estimate_summary: "Mock Quote: Could be a worn-out flux capacitor. It's a tricky one!",
-      estimated_parts_cost: 1200,
-      estimated_labor_cost: 800,
-      total_estimate: 2000,
-    }),
-    functionCalls: [],
-    candidates: [],
-    usageMetadata: { promptTokenCount: 0, candidatesTokenCount: 0, totalTokenCount: 0 },
-};
+const MOCK_QUOTE_RESPONSE_TEXT = JSON.stringify({
+  estimate_summary: "Mock Quote: Could be a worn-out flux capacitor. It's a tricky one!",
+  estimated_parts_cost: 1200,
+  estimated_labor_cost: 800,
+  total_estimate: 2000,
+});
 
 export const getGeminiChatResponse = async (history: string): Promise<string> => {
   if (!API_KEY) {
-    return MOCK_CHAT_RESPONSE.text;
+    return MOCK_CHAT_RESPONSE_TEXT;
   }
   try {
     const response = await ai.models.generateContent({
@@ -117,7 +105,7 @@ export const getGeminiChatResponse = async (history: string): Promise<string> =>
 
 export const getGeminiQuote = async (problemDescription: string, vehicleMake: string, vehicleModel: string): Promise<string> => {
   if (!API_KEY) {
-    return MOCK_QUOTE_RESPONSE.text;
+    return MOCK_QUOTE_RESPONSE_TEXT;
   }
   try {
     const response = await ai.models.generateContent({
