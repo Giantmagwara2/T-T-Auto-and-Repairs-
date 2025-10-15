@@ -11,7 +11,7 @@ const Home: React.FC = () => {
       <section className="text-center">
         <div className="relative rounded-lg overflow-hidden h-[70vh] flex items-center justify-center">
           <img
-            src="https://images.unsplash.com/photo-1487744470263-ae74f4d01a68?q=80&w=1470&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1553941243-0f0a5a54e9a3?q=80&w=1470&auto=format&fit=crop"
             alt="High performance car engine"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -61,10 +61,10 @@ const Home: React.FC = () => {
         <p className="text-center text-brand-silver mb-12">A gallery of our recent projects and repairs. #TandTAutoTech</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            'https://images.unsplash.com/photo-1617083273574-68145a2f51c7?q=80&w=800&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=800&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1580475393433-c77e012e0b57?q=80&w=800&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800&auto=format&fit=crop'
+            'https://images.unsplash.com/photo-1571271518341-932f6a2a0e44?q=80&w=800&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1617154261453-277133fae23b?q=80&w=800&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1622059368398-54b9d5c3f2d2?q=80&w=800&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1522881451255-f5f8b864e036?q=80&w=800&auto=format&fit=crop'
           ].map((imgSrc, i) => (
              <div key={i} className="bg-black/30 aspect-square rounded-lg overflow-hidden shadow-lg border border-brand-silver/20 animate-slide-in-up" style={{ animationDelay: `${i * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}>
                 <img src={imgSrc} alt={`Customer car repair ${i + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"/>

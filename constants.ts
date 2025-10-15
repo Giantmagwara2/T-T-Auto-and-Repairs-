@@ -48,13 +48,13 @@ export const TEAM_DATA: TeamMember[] = [
     name: 'Thabo "The Tactician" Ndlovu',
     role: 'Co-Founder & Master Technician',
     bio: 'With over 20 years of experience, Thabo is a master diagnostician specializing in complex European engine management systems. His methodical approach ensures no fault goes unfound.',
-    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1621999204907-d16a3f7ea9b0?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 't2',
     name: 'Thomas "The Tuner" Pillay',
     role: 'Co-Founder & Performance Specialist',
     bio: 'Thomas lives and breathes performance. An expert in engine tuning and performance modifications, he is dedicated to squeezing every ounce of power from your vehicle, reliably and safely.',
-    imageUrl: 'https://images.unsplash.com/photo-1627843563095-2df97843c9dc?q=80&w=800&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1605542247321-39985a210787?q=80&w=800&auto=format&fit=crop',
   },
 ];
