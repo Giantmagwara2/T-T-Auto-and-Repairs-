@@ -8,9 +8,19 @@ const Home: React.FC = () => {
   return (
     <div className="space-y-24">
       {/* Hero Section */}
-      <section className="text-center py-10 md:py-20">
-        <div className="relative rounded-lg overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1553522934-40a552541bee?q=80&w=1470&auto=format&fit=crop" alt="Custom bakkie against a Durban sunrise" className="absolute inset-0 w-full h-full object-cover opacity-20"/>
+      <section className="text-center">
+        <div className="relative rounded-lg overflow-hidden h-[60vh] flex items-center justify-center">
+          <video
+            src="https://videos.pexels.com/video-files/4434246/4434246-hd_1920_1080_30fps.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-20"
+            poster="https://images.unsplash.com/photo-1553522934-40a552541bee?q=80&w=1470&auto=format&fit=crop"
+          >
+            Your browser does not support the video tag.
+          </video>
            <div className="absolute inset-0 bg-ocean-dark/60"></div>
           <div className="relative z-10 p-8">
             <h1 className="font-sans text-4xl md:text-6xl font-extrabold text-white leading-tight animate-text-focus-in">
@@ -20,7 +30,7 @@ const Home: React.FC = () => {
               Delivering world-class precision and technical expertise. With over 20 years of industry experience, we are Durban's trusted automotive specialists.
             </p>
             <div className="mt-8 flex justify-center gap-4 animate-fade-in [animation-delay:1s]">
-              <Link to="/booking" className="inline-flex items-center gap-2 bg-zulu-terracotta text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta">
+              <Link to="/booking" className="inline-flex items-center gap-2 bg-zulu-terracotta text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ocean-dark focus:ring-zulu-terracotta animate-pulse-slow">
                 Book a Service
                 <ArrowRightIcon className="h-5 w-5" />
               </Link>
